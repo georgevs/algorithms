@@ -3,6 +3,7 @@ seq 1 | xargs -L1 time node -e 'require("./test")(require(process.argv[1]),proce
 
 5 x 100000
 -------------------
+0.58 bfs-iterative
 0.58 dfs-recursive
 0.64 dfs-iterative
 0.69 dfs-fp-array
