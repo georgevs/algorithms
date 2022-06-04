@@ -3,12 +3,13 @@ seq 1 | xargs -L1 time node -e 'require("./test")(require(process.argv[1]),proce
 
 5 x 100000
 -------------------
-0.65 dfs-iterative
-0.75 dfs-fp-array
-0.76 dfs-fp-transducer-push
-0.91 dfs-fp-transducer-concat
-1.52 dfs-fp-generators
-1.61 dfs-fp-iterators
+0.58 dfs-recursive
+0.64 dfs-iterative
+0.69 dfs-fp-array
+0.73 dfs-fp-transducer-push
+0.88 dfs-fp-transducer-concat
+1.08 dfs-fp-generators
+1.26 dfs-fp-iterators
 */
 
 const { asserteq, UnorderedArray } = require('../asserteq');
