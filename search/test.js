@@ -1,5 +1,5 @@
 /*
-seq 1 | xargs -L1 time node -e 'require("./test")(require(process.argv[1]),process.argv[2])'
+seq 5 | xargs -L1 time node search/test dfs-iterative 100000
 
 5 x 100000
 -------------------
@@ -15,7 +15,7 @@ seq 1 | xargs -L1 time node -e 'require("./test")(require(process.argv[1]),proce
 
 const { asserteq, UnorderedArray } = require('../asserteq');
 const { dagxs, vertices: [A, B, C, D, E, F, G, H] } = require('../sample-graph-data');
-const { g: graph, dg: directedGraph } = require('../graph');
+const { graph, directedGraph } = require('../graph');
 
 const dag = directedGraph(dagxs);
 
@@ -47,3 +47,21 @@ const test = ({ enumVertices, enumPaths, bfs }, n) => loop(Number.parseInt(n) ||
 });
 
 module.exports = test;
+
+if (require.main === module) {
+  const [testPath, targetRelPath, n] = process.argv.slice(1);
+  const path = require('path');
+  const allTargetsRelPaths = [
+    'bfs-iterative',
+    'bfs',
+    'dfs-fp-array',
+    'dfs-fp-generators',
+    'dfs-fp-iterators',
+    'dfs-fp-transducers-concat',
+    'dfs-fp-transducers-push',
+    'dfs-iterative',
+    'dfs-recursive'
+  ];
+  const targetRelPaths = targetRelPath ? [targetRelPath] : allTargetsRelPaths;
+  targetRelPaths.forEach(targetRelPath => test(require(path.join(path.dirname(testPath), targetRelPath)), n));
+}

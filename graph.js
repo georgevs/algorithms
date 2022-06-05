@@ -28,10 +28,10 @@ const weightedGraph = ({ directed }) => (xs) => {
 };
 
 module.exports = {   
-  g: unweightedGraph({ directed: false }),
-  dg: unweightedGraph({ directed: true }),
-  wg: weightedGraph({ directed: false }),
-  wdg: weightedGraph({ directed: true })
+  graph: unweightedGraph({ directed: false }),
+  directedGraph: unweightedGraph({ directed: true }),
+  weightedGraph: weightedGraph({ directed: false }),
+  weightedDirectedGraph: weightedGraph({ directed: true })
 };
 
 if (require.main === module) {

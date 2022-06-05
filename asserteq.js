@@ -3,12 +3,27 @@ const eq = (x, y) => {
   if (x instanceof Function || y instanceof Function) { return false }
   if (x instanceof Set || y instanceof Set) { return eqs(x, y) }
   if (x instanceof UnorderedArray || y instanceof UnorderedArray) { return equa(x, y) }
+  if (x instanceof SomeArray || y instanceof SomeArray) { return eqsa(x, y) }
   if (Array.isArray(x) || Array.isArray(y)) { return eqa(x, y) }
   if (Object(x) === x && Object(y) === y) { return eqo(x, y) }
   return false;
 };
 
 class UnorderedArray extends Array { }
+class SomeArray extends Array { }
+
+const eqsa = (xs, ys) => {
+  if (!(xs instanceof Array && ys instanceof Array)) { return false }
+  const sxs = xs instanceof SomeArray ? xs : SomeArray.of(xs);
+  const sys = ys instanceof SomeArray ? ys : SomeArray.of(ys);
+
+  for (const x of sxs) {
+    for (const y of sys) {
+      if (eq(x, y)) { return true }
+    }
+  }
+  return false;
+};
 
 const equa = (xs, ys) => {
   if (!(xs instanceof Array && ys instanceof Array)) { return false }
@@ -44,7 +59,7 @@ const compareKey = ([lhs],[rhs]) => lhs.localeCompare(rhs);
 
 const asserteq = (e, r) => console.assert(eq(e, r), 'expected:', e, 'result:', r);
 
-module.exports = { asserteq, eq, UnorderedArray };
+module.exports = { asserteq, eq, UnorderedArray, SomeArray };
 
 if (require.main === module) {
   asserteq(true, eq(undefined, undefined));
@@ -100,4 +115,11 @@ if (require.main === module) {
   asserteq(true, eq(new Set([A, B, B, C]), new Set([A, B, C, B])));
   asserteq(true, eq(new Set([]), new Set([])));
   asserteq(false, eq(new Set([]), {}));
+  
+  asserteq(true, eq(SomeArray.of([]), []));
+  asserteq(true, eq(SomeArray.of([1,2,3],['a','b','c']), [1,2,3]));
+  asserteq(true, eq(SomeArray.of([1,2,3],['a','b','c']), ['a','b','c']));
+  asserteq(true, eq(SomeArray.of([1,2,3],['a','b','c']), SomeArray.of([A,B,C],[1,2,3])));
+  asserteq(false, eq(SomeArray.of([1,2,3],['a','b','c']), [A,B,C]));
+  asserteq(false, eq(SomeArray.of([1,2,3],['a','b','c']), '..not an array..'));
 }
