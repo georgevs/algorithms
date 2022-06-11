@@ -1,6 +1,6 @@
 const unweightedGraph = ({ directed }) => (xs) => {
   const g = new Map;
-  const vertices = () => g.keys();
+  const vertices = () => Array.from(g.keys());
   const neighbours = (v) => g.get(v);
   const addVertex = (v) =>  { let l; return (g.get(v) ?? (g.set(v, l = []), l)) };
   const addEdge = ([v1, v2]) => { 
@@ -14,7 +14,7 @@ const unweightedGraph = ({ directed }) => (xs) => {
 
 const weightedGraph = ({ directed }) => (xs) => {
   const g = new Map;
-  const vertices = () => g.keys();
+  const vertices = () => Array.from(g.keys());
   const neighbours = (v) => g.get(v).map(([v2]) => v2);
   const weights = (v) => g.get(v);
   const addVertex = (v) =>  { let l; return (g.get(v) ?? (g.set(v, l = []), l)) };

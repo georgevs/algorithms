@@ -1,3 +1,5 @@
+// https://youtu.be/09_LlHjoEiY?t=2208
+
 const queue = require('../queue');
 
 // n :: number of nodes
@@ -47,22 +49,9 @@ const solution = (n, g) => {
   return bfs;
 };
 
-module.exports = solution;
+const shortestPath = (g,s,e) => {
+  const bfs = solution(g.vertices().length, { get: g.neighbours });
+  return bfs(s, e);
+};
 
-if (require.main === module) {
-  const { asserteq, SomeArray: SA } = require('../asserteq');
-  const adj = new Map([
-    [0,[7,9,11]],
-    [3,[2,4]],
-    [6,[5,7]],
-    [7,[0,3,6,11]],
-    [8,[1,9,12]],
-    [9,[0,8,10]],
-    [10,[1,9]],
-    [11,[0,7]]
-  ]);
-  const bfs = solution(12, { get: (x) => adj.get(x) ?? [] });
-  
-  asserteq([0,7,3,4], bfs(0,4));
-  asserteq(SA.of([0,9,10,1], [0,9,8,1]), bfs(0,1));
-}
+module.exports = shortestPath;

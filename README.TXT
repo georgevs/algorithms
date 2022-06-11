@@ -139,3 +139,32 @@ BFS shortest path on a grid - https://youtu.be/09_LlHjoEiY?t=2426
   -- neighbors of cell i,j are cells offset with `direction vectors` [±1, ±1]
   -- (optionally) instead of pushing (i,j) into the bfs queue, 
       have separate queues for each grid dimention 
+
+                        * * * 
+
+Topological sort - https://youtu.be/09_LlHjoEiY?t=3384
+- topological ordering is an ordering of the nodes in a directed graph where
+  for each directed edge from A to B, A appears BEFORE B in the ordering
+- topological sort can find a topolgical ordering in O(V+E) 
+- topological ordering are NOT unique
+- not all graphs have topological ordering (for example graph with cycle)
+- graphs WITH topological ordering:
+  -- directed acyclic graphs
+  -- Trees 
+- many real world problems can be modeled as directed graphs where events (nodes) happen BEFORE others
+  -- class prerequisites
+  -- program dependencies
+  -- event scheduling
+  -- assembly instructions
+- how to validate a graph is DAG
+  -- Tarjan strongly connected component algorithm
+
+Topological sort algorithm for trees - https://youtu.be/09_LlHjoEiY?t=3663
+
+Topological sort algorithm for graph - https://youtu.be/09_LlHjoEiY?t=3706
+* file://./topological-sort/sort.js
+- algorithm
+  -- pick an unvisited node
+  -- beginning the selected node DFS explore only unvisited nodes
+  -- on the recursive callback, add the current node in reverse order
+  -- repeat steps until no more unvisited nodes   

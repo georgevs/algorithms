@@ -50,16 +50,8 @@ const solution = (R, C, m, sr, sc) => {
   return solve();
 };
 
-module.exports = solution;
+const findPath = (m, sr, sc) => {
+  return solution(m.length, m[0].length, m, sr, sc);
+};
 
-if (require.main === module) {
-  const { asserteq } = require('../asserteq');
-  const m = [
-    ['S','.','.','#','.','.','.'],
-    ['.','#','.','.','.','#','.'],
-    ['.','#','.','.','.','.','.'],
-    ['.','.','#','#','.','.','.'],
-    ['#','.','#','E','.','#','.'],
-  ];
-  asserteq(9, solution(5, 7, m, 0, 0));
-}
+module.exports = findPath;
