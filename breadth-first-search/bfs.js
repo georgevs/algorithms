@@ -1,3 +1,5 @@
+const queue = require('../queue');
+
 // n :: number of nodes
 // g :: adjacency list
 const solution = (n, g) => {
@@ -42,14 +44,6 @@ const solution = (n, g) => {
     return path[0] === s ? path : [];
   };
 
-  const queue = () => {
-    const xs = [];
-    const enqueue = (x) => xs.push(x);
-    const dequeue = () => xs.shift();
-    const isEmpty = () => xs.length === 0;
-    return { enqueue, dequeue, isEmpty };
-  };
-
   return bfs;
 };
 
@@ -57,17 +51,18 @@ module.exports = solution;
 
 if (require.main === module) {
   const { asserteq, SomeArray: SA } = require('../asserteq');
-  const adj = {
-    [0]:[7,9,11],
-    [3]:[2,4],
-    [6]:[5,7],
-    [7]:[0,3,6,11],
-    [8]:[1,9,12],
-    [9]:[0,8,10],
-    [10]:[1,9],
-    [11]:[0,7]
-  };
-  const bfs = solution(12, { get: (x) => adj[x] ?? [] });
+  const adj = new Map([
+    [0,[7,9,11]],
+    [3,[2,4]],
+    [6,[5,7]],
+    [7,[0,3,6,11]],
+    [8,[1,9,12]],
+    [9,[0,8,10]],
+    [10,[1,9]],
+    [11,[0,7]]
+  ]);
+  const bfs = solution(12, { get: (x) => adj.get(x) ?? [] });
+  
   asserteq([0,7,3,4], bfs(0,4));
   asserteq(SA.of([0,9,10,1], [0,9,8,1]), bfs(0,1));
 }

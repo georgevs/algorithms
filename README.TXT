@@ -127,3 +127,15 @@ Breadth First Search (BFS) - https://youtu.be/09_LlHjoEiY?t=1999
 - particularily useful for finding the SHORTEST path on UNWEIGTHED graph
 
 BFS shortest path on a grid - https://youtu.be/09_LlHjoEiY?t=2426
+* file: file://./breadth-first-search-grid/bfs.js
+- many problems can be represented using a grid
+- a grid is also an implicit graph where neighbors are determined by the location in the grid
+  -- finding a path through a maze
+  -- finding a route through obstacles (dungeon problem statement)
+- convert grid to graph
+  -- label all cells with continuous numbers
+  -- construct adj list/matrix
+- adapt the grid data representation
+  -- neighbors of cell i,j are cells offset with `direction vectors` [±1, ±1]
+  -- (optionally) instead of pushing (i,j) into the bfs queue, 
+      have separate queues for each grid dimention 
