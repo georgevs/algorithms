@@ -1,4 +1,5 @@
 https://www.youtube.com/watch?v=09_LlHjoEiY
+https://github.com/williamfiset/algorithms
 
 
 Types of graphs - https://youtu.be/09_LlHjoEiY?t=149
@@ -168,3 +169,21 @@ Topological sort algorithm for graph - https://youtu.be/09_LlHjoEiY?t=3706
   -- beginning the selected node DFS explore only unvisited nodes
   -- on the recursive callback, add the current node in reverse order
   -- repeat steps until no more unvisited nodes   
+
+                        * * * 
+
+Shortst and Longest path on DAG - https://youtu.be/09_LlHjoEiY?t=4193
+* file://./single-source-shortest-path-on-dag/shortest-paths.js
+* https://github.com/williamfiset/Algorithms/blob/master/src/main/java/com/williamfiset/algorithms/graphtheory/TopologicalSortAdjacencyList.java
+- Directed acyclic graph (DAG) is a graph with directed edges and no cycles
+- the single source shortest path (SSSP) can be solved very efficiently (linear)
+- another algorithm: find the SHORTEST path from one node to ALL other nodes in the graph 
+  by using topological ordering
+- similar problem: find the LONGEST path from one node to ALL other nodes.
+  The problem is NP-hard for general graphs, but linear for DAGs.
+  To solve multiply ALL edges by -1, solve for SHORTEST path, and multiply the result by -1.
+ 
+                        * * * 
+
+ Dijkstra's shortest path algorithm - https://youtu.be/09_LlHjoEiY?t=4773
+ 

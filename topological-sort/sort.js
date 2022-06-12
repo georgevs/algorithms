@@ -1,16 +1,13 @@
 const sort = (g) => {
-  const vs = new Set;
   const rs = [];
-  const iter = (v) => {
+  const vs = new Set;
+  const visitIfNotVisited = v => vs.has(v) || visit(v);
+  const visit = (v) => {
     vs.add(v);
-    g.neighbours(v).filter(v2 => !vs.has(v2)).forEach(iter);
+    g.neighbours(v).forEach(visitIfNotVisited);
     rs.unshift(v);
   };
-  for (const v of g.vertices()) {
-    if (!vs.has(v)) {
-      iter(v);
-    }
-  }
+  g.vertices().forEach(visitIfNotVisited);
   return rs;
 };
 
