@@ -173,7 +173,7 @@ Topological sort algorithm for graph - https://youtu.be/09_LlHjoEiY?t=3706
                         * * * 
 
 Shortst and Longest path on DAG - https://youtu.be/09_LlHjoEiY?t=4193
-* file://./single-source-shortest-path-on-dag/shortest-paths.js
+* file://./single-source-shortest-paths-on-dag/topological-sort-shortest-paths.js
 * https://github.com/williamfiset/Algorithms/blob/master/src/main/java/com/williamfiset/algorithms/graphtheory/TopologicalSortAdjacencyList.java
 - Directed acyclic graph (DAG) is a graph with directed edges and no cycles
 - the single source shortest path (SSSP) can be solved very efficiently (linear)
@@ -185,5 +185,30 @@ Shortst and Longest path on DAG - https://youtu.be/09_LlHjoEiY?t=4193
  
                         * * * 
 
- Dijkstra's shortest path algorithm - https://youtu.be/09_LlHjoEiY?t=4773
- 
+Dijkstra's shortest path algorithm - https://youtu.be/09_LlHjoEiY?t=4773
+- single source shortest path algorithm for graphs with NON-NEGATIVE edge weights
+- complexity can be O(E logV)
+- 2 implementations:
+  -- lazy
+  -- eager
+
+Quick algorithm overview - https://youtu.be/09_LlHjoEiY?t=4907
+- maintain `dist[]` with distance to node
+  -- initially infinity for all nodes, except 0 for the starting node
+- maintain priority queue (PQ) of node-distance pairs sorted to minimize distance
+- add (s,0) in PQ, and loop while not empty pulling next promissing (node,distance)
+- iterate node's outward edges, and add new (node, distance) in PQ
+
+Lazy Dijkstra - https://youtu.be/09_LlHjoEiY?t=4989
+* file://./single-source-shortest-paths-on-dag/dijkstra-lazy-shortest-paths.js
+
+Finding the optimal path - https://youtu.be/09_LlHjoEiY?t=5491
+* file://./single-source-shortest-paths-on-dag/dijkstra-lazy-find-optimal-path.js
+- optimization: stop evaluating shortest paths early when the target node is visited
+
+Eager Dijkstra using indexed PQ - https://youtu.be/09_LlHjoEiY?t=5670
+- the lazy approach adds multiple (key,weight) pairs, and lazily removes them
+  because it's more efficient to add rather than update a PQ
+- the lazy approach may be inefficient for DENSE graphs
+- the eager approach avoids additional (key,weight) pairs by using INDEXED priority queue (IPQ)
+...

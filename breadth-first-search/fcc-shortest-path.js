@@ -22,7 +22,7 @@ const solution = (n, g) => {
     const visited = Array(n).fill(false);
     visited[s] = true;
     const prev = Array(n);
-    while (!q.isEmpty()) {
+    while (!q.empty()) {
       const node = q.dequeue();
       const neighbours = g.get(node);
       for (const next of neighbours) {

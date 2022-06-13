@@ -1,3 +1,6 @@
+// algorithm: Topological sort shortest paths
+// https://youtu.be/09_LlHjoEiY?t=4193 
+
 const sort = require('../topological-sort/sort');
 
 const shortestPaths = (g, s) => {

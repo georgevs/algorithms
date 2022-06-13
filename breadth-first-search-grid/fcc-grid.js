@@ -20,7 +20,7 @@ const solution = (R, C, m, sr, sc) => {
     rq.enqueue(sr);
     cq.enqueue(sc);
     visited[sr][sc] = true;
-    while (!rq.isEmpty()) {
+    while (!rq.empty()) {
       const r = rq.dequeue(), c = cq.dequeue();
       if (m[r][c] === 'E') { reached_end = true; break }
       explore_neighbours(r, c);
