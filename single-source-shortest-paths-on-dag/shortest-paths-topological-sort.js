@@ -1,10 +1,10 @@
 // algorithm: Topological sort shortest paths
 // https://youtu.be/09_LlHjoEiY?t=4193 
 
-const sort = require('../topological-sort/sort');
+const topologicalSort = require('../topological-sort/topological-sort');
 
 const shortestPaths = (g, s) => {
-  const vs = sort(g);
+  const vs = topologicalSort(g);
   const rs = new Map(vs.map(v => [v, Infinity]));
   const visit = (v, rw) => {
     g.weights(v).forEach(([v2, w2]) => {
@@ -19,3 +19,7 @@ const shortestPaths = (g, s) => {
 };
 
 module.exports = shortestPaths;
+
+if (require.main === module) {
+  require('./test')({ topologicalSortShortestPaths: shortestPaths });
+}

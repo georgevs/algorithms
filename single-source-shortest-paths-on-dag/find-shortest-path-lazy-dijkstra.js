@@ -1,7 +1,7 @@
 // algorithm: Lazy Dijkstra's find optimal path
 // https://youtu.be/09_LlHjoEiY?t=5491
 
-const queue = require('../priority-queue');
+const queue = require('../priority-queue-heap');
 
 const shortestPaths = (g, s, e) => {
   const ws = new Map(g.vertices().map(v => [v, Infinity]));
@@ -32,7 +32,7 @@ const shortestPaths = (g, s, e) => {
   return { ws, rs };
 };
 
-const findOptimalPath = (g, s, e) => {
+const findShortestPath = (g, s, e) => {
   const { ws, rs } = shortestPaths(g, s, e);
   const vs = [];
   if (ws.get(e) !== Infinity) {
@@ -43,4 +43,8 @@ const findOptimalPath = (g, s, e) => {
   return vs;
 };
 
-module.exports = findOptimalPath;
+module.exports = findShortestPath;
+
+if (require.main === module) {
+  require('./test')({ dijkstraFindShortestPath: findShortestPath });
+}

@@ -1,4 +1,4 @@
-const sort = (g) => {
+const topologicalSort = (g) => {
   const rs = [];
   const vs = new Set;
   const visitIfNotVisited = v => vs.has(v) || visit(v);
@@ -11,4 +11,8 @@ const sort = (g) => {
   return rs;
 };
 
-module.exports = sort;
+module.exports = topologicalSort;
+
+if (require.main === module) {
+  require('./test')(topologicalSort);
+}

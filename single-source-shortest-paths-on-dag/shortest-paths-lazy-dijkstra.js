@@ -1,7 +1,7 @@
 // algorithm: Lazy Dijkstra's single source shortest paths
 // https://youtu.be/09_LlHjoEiY?t=4989
 
-const queue = require('../priority-queue');
+const queue = require('../priority-queue-heap');
 
 const shortestPaths = (g, s) => {
   const ws = new Map(g.vertices().map(v => [v, Infinity]));
@@ -30,3 +30,7 @@ const shortestPaths = (g, s) => {
 };
 
 module.exports = shortestPaths;
+
+if (require.main === module) {
+  require('./test')({ lazyDijkstra: shortestPaths });
+}

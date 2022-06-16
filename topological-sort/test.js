@@ -30,14 +30,13 @@ const isTopologicalOrderOf = logf('', (g, s) => {
   return true;
 });
 
-const test = (sort) => {
+const test = (topologicalSort) => {
   asserteq(true, isTopologicalOrderOf(g, [C,B,E,F,K,A,D,G,H,I,J,L,M]));
-  asserteq(true, isTopologicalOrderOf(g, sort(g)));
+  asserteq(true, isTopologicalOrderOf(g, topologicalSort(g)));
 };
 
 module.exports = test;
 
 if (require.main === module) {
-  test(require('./fcc-sort'));
-  test(require('./sort'));
+  test(require('./topological-sort'));
 }
