@@ -211,4 +211,37 @@ Eager Dijkstra using indexed PQ - https://youtu.be/09_LlHjoEiY?t=5670
   because it's more efficient to add rather than update a PQ
 - the lazy approach may be inefficient for DENSE graphs
 - the eager approach avoids additional (key,weight) pairs by using INDEXED priority queue (IPQ)
-...
+
+D-ary heap optimization - https://youtu.be/09_LlHjoEiY?t=5990
+- in dense graphs (ie large E/V) with a lot of updates it's better to use D-ary PQ
+- D-ary PQ has D children per node rather than two in binary PQ
+- general recomendation is D = E/V which gives O(E*logE/V(V))
+
+Fibonacci heap optimization - https://youtu.be/09_LlHjoEiY?t=6148
+- gives O(E + V*logV(V))
+- difficult to implement
+- impractical except for quite large graphs
+
+                        * * * 
+
+Bellman-Ford algorithm - https://youtu.be/09_LlHjoEiY?t=6646
+* file://./single-source-shortest-paths-on-dag/shortest-paths-bellman-ford.js
+* https://github.com/williamfiset/Algorithms/blob/master/src/main/java/com/williamfiset/algorithms/graphtheory/BellmanFordAdjacencyList.java
+- single source shortest path algorithm
+- simple, but worse time complexity
+- for comparison: 
+  -- BF complexity is O(EV) 
+  -- Dijkstra complexity is O((E+V)log(V))s
+  -- BF can handle NEGATIVE CYCLES, Dijkstra CAN'T
+
+Negative cycles - https://youtu.be/09_LlHjoEiY?t=6854
+- negative self-loops
+- negative net gain of an arbitrary loop of nodes
+
+Bellman-Ford algorithm steps - https://youtu.be/09_LlHjoEiY?t=6892
+- initialize the start vertice w to 0, and repeat V times, 
+    for each edge (v1,v2,xw) update w2 = min(w2, w1+xw)
+- to detect negative cycles, repeat V times, 
+    for each edge (v1,v2,xw) w2 = -Infinity if (w2 < w1+xw) (..aka loop is detected)
+
+Floyd-Warshall algorithm - https://youtu.be/09_LlHjoEiY?t=7534

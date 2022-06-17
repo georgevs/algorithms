@@ -1,5 +1,5 @@
 const vertices = Array.from('ABCDEFGHIJ').map(Symbol);
-const [A, B, C, D, E, F, G, H, I, J] = vertices;
+const [A, B, C, D, E, F, G, H, I, J, K] = vertices;
 
 // directed acyclic graph
 const dagxs = [
