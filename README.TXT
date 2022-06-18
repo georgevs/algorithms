@@ -244,4 +244,15 @@ Bellman-Ford algorithm steps - https://youtu.be/09_LlHjoEiY?t=6892
 - to detect negative cycles, repeat V times, 
     for each edge (v1,v2,xw) w2 = -Infinity if (w2 < w1+xw) (..aka loop is detected)
 
+                        * * * 
+
+Shortest Path (SP) Algorithms - https://youtu.be/09_LlHjoEiY?t=7580
+- BFS vs. Dijkstra vs. Bellman-Ford vs. Floyd-Warshall
+
 Floyd-Warshall algorithm - https://youtu.be/09_LlHjoEiY?t=7534
+- ALL PAIRS shortest graph algorithm
+- time complexity is O(V^3)
+- optimal representaion is adjacency matrix xw = m[i][j] for the edge from `i` to `j`
+- main idea: gradually build up all intermediate routes between `i` and `j`
+- uses dynamic programming (DP) to cache previous optimal solutions
+    dp[k][i][j] = shortest path from `i` to `j` through [0,1,...k]
