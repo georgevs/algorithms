@@ -249,10 +249,21 @@ Bellman-Ford algorithm steps - https://youtu.be/09_LlHjoEiY?t=6892
 Shortest Path (SP) Algorithms - https://youtu.be/09_LlHjoEiY?t=7580
 - BFS vs. Dijkstra vs. Bellman-Ford vs. Floyd-Warshall
 
+                        * * * 
+                        
 Floyd-Warshall algorithm - https://youtu.be/09_LlHjoEiY?t=7534
 - ALL PAIRS shortest graph algorithm
 - time complexity is O(V^3)
-- optimal representaion is adjacency matrix xw = m[i][j] for the edge from `i` to `j`
-- main idea: gradually build up all intermediate routes between `i` and `j`
-- uses dynamic programming (DP) to cache previous optimal solutions
-    dp[k][i][j] = shortest path from `i` to `j` through [0,1,...k]
+- optimal representaion is adjacency matrix:
+  -- m[i][j] = xw for the edge from `i` to `j`
+  -- m[i][j] = m[j][i] = `Infinity` if NO connection between `i` and `j`
+- main idea: gradually find shortest paths `i` and `j` through ONLY subset of vertices
+  -- start with direct route from `i` to `j` as best
+  -- then check if connecting best routes `i` to `1`, and `1` to `j` is better 
+    than the best route `i` to `j` not involving `1` (.. in this iteration only direct route is an option)
+  -- then check if connecting best routes `i` to `2`, and `2` to `j` (possibly through `1`) is better 
+    than the best route `i` to `j` (possibly through `1`) not involving `2`
+  -- then check if connecting best routes `i` to `3`, and `3` to `j` (possibly through `1`,`2`) is better 
+    than the best route `i` to `j` (possibly through `1`,`2`) not involving `3`
+  ...
+  -- at the end will have best routes `i` to `j` (possibly through 1,2,..n-1, n)
