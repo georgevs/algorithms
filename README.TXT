@@ -267,3 +267,14 @@ Floyd-Warshall algorithm - https://youtu.be/09_LlHjoEiY?t=7534
     than the best route `i` to `j` (possibly through `1`,`2`) not involving `3`
   ...
   -- at the end will have best routes `i` to `j` (possibly through 1,2,..n-1, n)
+
+                        * * * 
+
+Algorithm to find bridges and articulation points - https://youtu.be/09_LlHjoEiY?t=8959
+* file://./bridges-and-articulation-points/bridges.js
+- main idea:
+  -- map vertices to indeces
+  -- map edges to directed edges
+  -- map vertices to lowest vertice index reachable over directed edges
+  -- an edge is a bridge if its directed edge from vertex index is less than 
+      its to vertex lowest vertice index reachable over directed edges
