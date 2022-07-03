@@ -28,4 +28,5 @@ module.exports = test;
 
 if (require.main === module) {
   test({ bridges: require('./bridges') });
+  test({ bridges: require('./bridges-fcc') });
 }

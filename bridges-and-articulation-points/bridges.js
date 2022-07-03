@@ -64,5 +64,5 @@ const mapVerticesToIndeces = (gv) => {
 module.exports = bridges;
 
 if (require.main === module) {
-  require('./test')({ bridges });
+  require('./test')({ bridges }, Number(process.argv[2]) || 1);
 }

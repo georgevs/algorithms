@@ -278,3 +278,5 @@ Algorithm to find bridges and articulation points - https://youtu.be/09_LlHjoEiY
   -- map vertices to lowest vertice index reachable over directed edges
   -- an edge is a bridge if its directed edge from vertex index is less than 
       its to vertex lowest vertice index reachable over directed edges
+
+Articulation points - https://youtu.be/09_LlHjoEiY?t=9801
