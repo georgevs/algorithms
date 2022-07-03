@@ -280,3 +280,10 @@ Algorithm to find bridges and articulation points - https://youtu.be/09_LlHjoEiY
       its to vertex lowest vertice index reachable over directed edges
 
 Articulation points - https://youtu.be/09_LlHjoEiY?t=9801
+- an articulation point has `id` equal to `low` of a next node over a bridge,
+  which is also an indicator of a cycle
+- an articulation point MUST have more than a single OUTGOING edge
+
+                        * * * 
+
+Tarjan's algorithm for finding strongly connected components - https://youtu.be/09_LlHjoEiY?t=10651
