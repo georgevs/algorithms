@@ -286,4 +286,6 @@ Articulation points - https://youtu.be/09_LlHjoEiY?t=9801
 
                         * * * 
 
-Tarjan's algorithm for finding strongly connected components - https://youtu.be/09_LlHjoEiY?t=10651
+Tarjan's algorithm for finding strongly connected components - https://youtu.be/09_LlHjoEiY?t=10653
+* file://./strongly-connected-components/strongly-connected-components-tarjan.js
+- strongly connected components

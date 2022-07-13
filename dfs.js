@@ -1,16 +1,17 @@
-const dfs = ({ addVertex: fnv, addEdge: fnx }, g, s) => {
+const dfs = ({ discover, finish, edge }, g, ovs = g.vertices()) => {
   const vs = new Set;
-  const iter = (v1) => { 
-    if (fnv) { fnv(v1) }
+  const visit = (v1, vp) => {
     vs.add(v1);
-    g.neighbours(v1).forEach(v2 => { 
-      if (fnx) { fnx(v1, v2) }
-      visit(v2);
-    }); 
+    if (discover) { discover([v1, vp]) }
+    for (let v2 of g.neighbours(v1)) { 
+      if (!vs.has(v2)) { visit(v2, v1) }
+      else if (edge) { edge(v1, v2) }
+    }
+    if (finish) { finish(v1) }
   };
-  const visit = v => { vs.has(v) || iter(v) };
-  if (s !== undefined) { visit(s) }
-  else { g.vertices().forEach(visit) }
+  for (let v1 of ovs) {
+    if (!vs.has(v1)) { visit(v1, null) }
+  }
 };
 
 module.exports = dfs;
