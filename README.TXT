@@ -289,3 +289,15 @@ Articulation points - https://youtu.be/09_LlHjoEiY?t=9801
 Tarjan's algorithm for finding strongly connected components - https://youtu.be/09_LlHjoEiY?t=10653
 * file://./strongly-connected-components/strongly-connected-components-tarjan.js
 - strongly connected components
+
+                        * * * 
+
+Traveling salesman - https://youtu.be/09_LlHjoEiY?t=12012
+- definition:
+  -- given a list of cities, and
+  -- the distance between each city,
+  -- what is the SHORTEST route to visit EACH city exactly ONCE, and
+  -- RETURN to the origin city
+- formal definition:
+  -- given a COMPLETE weighted graph,
+  -- what is Hamiltonian cycle of minimum cost
