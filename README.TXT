@@ -1,6 +1,7 @@
 https://www.youtube.com/watch?v=09_LlHjoEiY
 https://github.com/williamfiset/algorithms
 
+https://wingkwong.github.io/leetcode-the-hard-way/
 
 Types of graphs - https://youtu.be/09_LlHjoEiY?t=149
 - undirected
@@ -293,6 +294,9 @@ Tarjan's algorithm for finding strongly connected components - https://youtu.be/
                         * * * 
 
 Traveling salesman - https://youtu.be/09_LlHjoEiY?t=12012
+* https://leetcode.com/problems/shortest-path-visiting-all-nodes/solution/
+* file://./traveling-salesman/traveling-salesman.js
+
 - definition:
   -- given a list of cities, and
   -- the distance between each city,
@@ -301,3 +305,6 @@ Traveling salesman - https://youtu.be/09_LlHjoEiY?t=12012
 - formal definition:
   -- given a COMPLETE weighted graph,
   -- what is Hamiltonian cycle of minimum cost
+
+
+Continue from here https://youtu.be/09_LlHjoEiY?t=13201
