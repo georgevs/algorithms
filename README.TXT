@@ -306,5 +306,38 @@ Traveling salesman - https://youtu.be/09_LlHjoEiY?t=12012
   -- given a COMPLETE weighted graph,
   -- what is Hamiltonian cycle of minimum cost
 
+                        * * * 
 
-Continue from here https://youtu.be/09_LlHjoEiY?t=13201
+Existence of Eulerian paths and ciycles - https://youtu.be/09_LlHjoEiY?t=13948
+- Eulerian path: path which visits each edge exactly once
+- Eulerian cycle: Eulerian path which starts and ends at the same vertex
+- conditions for existence of eulerian PATH:
+  -- all vertices with nonzero degree belong to a single connected component
+  undirected graph: 
+    -- all have even degree,  
+    -- or exactly two vertices have odd (..those would be the start and end)
+  directed graph: 
+    -- at most one vertex has in-out=1, 
+    -- and at most one vertex has out-in=1,
+    -- and all others have in=out
+- conditions for existence of eulerian CYCLE:
+  undirected:
+    -- all have even degree
+  directed:
+    -- all have in=out
+
+Finding Eulerian paths and cycles - https://youtu.be/09_LlHjoEiY?t=14479
+- prerequisite: find if Eulerian path exists:
+  -- dg:0|1=+1,0|1=-1,*=0
+  -- g:*=2i|2=2i+1
+- find a start node:
+  -- the node with extra OUTGOING edge will be the STARTING node
+  -- the node with extra INGOING edge will be the ENDING node
+  -- if ALL nodes have equal in/out edges there's an Eulerian cycle, and we can start enywhere
+
+
+
+
+
+
+Continue from here https://youtu.be/09_LlHjoEiY?t=15024
