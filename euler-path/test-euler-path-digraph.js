@@ -38,7 +38,7 @@ const test = ({ digraph, eulerPathDigraph, eulerPath }, n) => loop(Number.parseI
   if (eulerPath) { testEulerPath(eulerPath) }
 });
 const testDigraph = (digraph) => {
-  const degrees = (g) => g.vertices().map(g.degree);
+  const degrees = (g) => g.vertices().map(v => g.outEdges(v).length + g.inEdges(v).length);
   asserteq([0, 3, 6, 6, 4, 2, 3], degrees(dg1(digraph)));
   asserteq([4, 2, 4, 2], degrees(dg2(digraph)));
   asserteq([2, 2, 2, 2], degrees(dg3(digraph)));

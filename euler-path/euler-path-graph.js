@@ -7,17 +7,20 @@ const eulerPathGraph = (n, xs) => {
     let i0;
     const vs = g.vertices();
     for (let i = 0; i < vs.length; ++i) {
-      if (g.degree(vs[i]) % 2 != 0) { return vs[i] }
+      if (isOdd(vs[i])) { return vs[i] }
       if (i0 == undefined) { i0 = i }
     }
     return vs[i0];
   };
   
   const hasEulerPath = () => (
-    g.vertices().filter(v => g.degree(v) % 2 != 0).length <= 2
+    g.vertices().filter(isOdd).length <= 2
   );
 
-  return { ...g, first, hasEulerPath };
+  const isOdd = (v) => g.edges(v).length % 2 != 0;
+  const outEdges = g.edges;
+
+  return { ...g, outEdges, first, hasEulerPath };
 };
 
 module.exports = eulerPathGraph;

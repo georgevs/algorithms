@@ -7,7 +7,7 @@ const eulerPathDigraph = (n, xs) => {
     let i0;
     const vs = g.vertices();
     for (let i = 0; i < vs.length; ++i) {
-      const d = 2 * g.edges(vs[i]).length - g.degree(vs[i]);
+      const d = diffDegree(vs[i]);
       if (d == 1) { return vs[i] }
       if (i0 == undefined && d == 0) { i0 = i }
     }
@@ -21,9 +21,10 @@ const eulerPathDigraph = (n, xs) => {
       if (d == -1) { return ++acc.n <= 1 } // at most one vertex of +1 in degree
       return false; // no vertex of +2 in/out degree
     };
-    const diff = (v) => 2 * g.edges(v).length - g.degree(v);  // out - in degree
-    return g.vertices().map(diff).every(conforms({ n: 0, p: 0 }));
+    return g.vertices().map(diffDegree).every(conforms({ n: 0, p: 0 }));
   };
+
+  const diffDegree = (v) => g.outEdges(v).length - g.inEdges(v).length;
 
   return { ...g, first, hasEulerPath };
 };

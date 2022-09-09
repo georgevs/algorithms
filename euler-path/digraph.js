@@ -1,18 +1,17 @@
 const digraph = (n, xs) => {
   const vs = Array.from(Array(n), (_, i) => i);
-  const es = Array.from(vs, () => []);
-  const ds = Array(n).fill(0);
+  const oes = Array.from(vs, () => []);
+  const ies = Array.from(vs, () => []);
   const vertices = () => vs;
-  const edges = (v) => es[v];  // out edges
-  const degree = (v) => ds[v];  // total edges count
+  const outEdges = (v) => oes[v];
+  const inEdges = (v) => ies[v];
   const addEdge = (e) => { 
     const [v1, v2] = e; 
-    es[v1].push(e);
-    ds[v1]++;
-    ds[v2]++;
+    oes[v1].push(e);
+    ies[v2].push(e);
   };
   xs.forEach(addEdge);
-  return { vertices, edges, degree };
+  return { vertices, outEdges, inEdges };
 };
 
 module.exports = digraph;
