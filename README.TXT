@@ -336,8 +336,21 @@ Finding Eulerian paths and cycles - https://youtu.be/09_LlHjoEiY?t=14479
   -- if ALL nodes have equal in/out edges there's an Eulerian cycle, and we can start enywhere
 
 
+Prim's Minimum Spanning Tree - https://youtu.be/09_LlHjoEiY?t=15786
+file://./minimum-spanning-tree/minimum-spanning-tree-prim.js
+- MST: 
+  -- subset of edges connecting ALL vertices 
+  -- without cycles 
+  -- where the sum of those edges weights is the minimum
+
+- Prims algorithm (Lazy):
+  -- Q is a priority queue over the edges weight
+  -- T is the result MST
+  -- S is a set of vertices aready in T
+  -- pick a random starting vertex `v`
+  -- add the selected vertex in S, and enqueue all its edges into Q
+  -- dequeue an edge `e` from Q, until either of its vertices `u` is NOT yet in S
+  -- add the found edge `e` in T, and continue with `u` if |T|<|V|-1 (...there are still unconnected vertices)
 
 
-
-
-Continue from here https://youtu.be/09_LlHjoEiY?t=15024
+Continue from here https://youtu.be/09_LlHjoEiY?t=16626
