@@ -22,4 +22,5 @@ module.exports = test;
 
 if (require.main === module) {
   test(require('./minimum-spanning-tree-prim-lazy'));
+  test(require('./minimum-spanning-tree-prim-eager'));
 }
