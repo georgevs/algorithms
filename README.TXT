@@ -353,11 +353,26 @@ file://./minimum-spanning-tree/minimum-spanning-tree-prim.js
 - add the found edge `e` in T, and continue with `u` if |T|<|V|-1 (...there are still unconnected vertices)
 
 Prims algorithm (Eager): https://youtu.be/09_LlHjoEiY?t=16626
-- in the eager version on each step try to determine which incomming INCOMMING edges 
+- in the eager version on each step try to determine which INCOMMING edges 
   to select to include in the MST
 - instead of include all edges of a node, RELAX (update) the destination node MOST promissing edge
 - use INDEXED PRIORITY QUEUE to efficiently update key-value pairs
 
+Graph edge density analysis - https://youtu.be/09_LlHjoEiY?t=17186
+- adj list is faster in sparce graphs <50%
+- adj matrix is faster in dense graphs >50%
+
+                        * * * 
+
+Max Flow Ford-Fulkerson method - https://youtu.be/09_LlHjoEiY?t=17910
+- Flow graph: 
+  -- edges have max CAPACITY, and flow VALUE
+  -- SOURCE and SINK node
+- the maximum flow problem:
+  -- with INFINITE input source, 
+  -- how much FLOW can we push through the network, 
+  -- without exceeding the CAPACITY of any edge
+- the maximum flow EQUALS the SUM of the flows entering the sink
 
 
-Continue from here https://youtu.be/09_LlHjoEiY?t=17006
+Continue from here https://youtu.be/09_LlHjoEiY?t=19646
