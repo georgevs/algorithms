@@ -1,18 +1,17 @@
 class Graph {
-  constructor(n, xs) {
+  constructor(n, exs) {
     this.vs = Array.from(Array(n), (_, v) => v);
     this.oxs = Array.from(this.vs, () => []);
     this.ixs = Array.from(this.vs, () => []);
-    this.xss = new Set;
-    xs.forEach(e => {
-      const [v1, v2] = e;
-      this.oxs[v1].push(e);
-      this.ixs[v2].push(e);
-      this.xss.add(e);
+    this.exs = new Set;
+    exs.forEach(e => {
+      this.oxs[e.from()].push(e);
+      this.ixs[e.to()].push(e);
+      this.exs.add(e);
     });
   }
-  edges() { return this.xss }
   vertices() { return this.vs }
+  edges() { return this.exs }
   outEdges(v) { return this.oxs[v] }
   inEdges(v) { return this.ixs[v] }
 }

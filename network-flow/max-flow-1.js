@@ -25,9 +25,15 @@ const residualCapacityOf = (p) => (
   Math.min(...p.map(([, , c]) => c))
 );
 
+class Edge extends Array {
+  from() { return this[0] }
+  to() { return this[1] }
+  acceptable() { return true }
+}
+
 class FlowGraph extends Graph {
   constructor(n, xs, s, t) {
-    super(n, xs.map(([v1, v2, c]) => [v1, v2, 0, c]));
+    super(n, xs.map(([v1, v2, c]) => Edge.of(v1, v2, 0, c)));
     this.s = s;
     this.t = t;
   }
@@ -37,11 +43,11 @@ class FlowGraph extends Graph {
 
 class ResidualGraph extends Graph {
   constructor(fg) {
-    const xs = Array.from(fg.edges()).flatMap(e => { 
+    const exs = Array.from(fg.edges()).flatMap(e => { 
       const [v1, v2, f, c] = e;
-      return [[v1, v2, c - f, e], [v2, v1, f, e]].filter(([, , f]) => f != 0);
+      return [Edge.of(v1, v2, c - f, e), Edge.of(v2, v1, f, e)].filter(([, , f]) => f != 0);
     });
-    super(fg.vertices().length, xs);
+    super(fg.vertices().length, exs);
   }
 }
 

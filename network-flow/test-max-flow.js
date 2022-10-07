@@ -21,5 +21,6 @@ const test = ({ maxFlow, FlowGraph }, n) => loop(Number.parseInt(n) || 1, () => 
 module.exports = test;
 
 if (require.main === module) {
-  test(require('./max-flow'));
+  test(require('./max-flow-1'));
+  test(require('./max-flow-2'));
 }
