@@ -1,7 +1,8 @@
 const { asserteq,  } = require('../asserteq');
+const FlowGraph = require('./flow-graph');
 
 const loop = (n, fn) => { for (let i = 0; i < n; ++i) fn(i) };
-const test = ({ maxFlow, FlowGraph }, n) => loop(Number.parseInt(n) || 1, () => {
+const test = (maxFlow, n) => loop(Number.parseInt(n) || 1, () => {
   const g1 = new FlowGraph(11, [
     [0,3,2],[0,4,4],
     [1,4,5],[1,5,6],
@@ -21,6 +22,5 @@ const test = ({ maxFlow, FlowGraph }, n) => loop(Number.parseInt(n) || 1, () => 
 module.exports = test;
 
 if (require.main === module) {
-  test(require('./max-flow-ford-fulkerson-1'));
-  test(require('./max-flow-ford-fulkerson-2'));
+  test(require('./max-flow-dfs'));
 }

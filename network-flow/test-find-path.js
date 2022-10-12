@@ -31,5 +31,5 @@ const test = (findPath, n) => loop(Number.parseInt(n) || 1, () => {
 module.exports = test;
 
 if (require.main === module) {
-  test(require('./find-path-recursive'));
+  test(require('./find-path-dfs-recursive'));
 }

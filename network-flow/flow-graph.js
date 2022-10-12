@@ -1,32 +1,6 @@
 // Max Flow Ford-Fulkerson method - https://youtu.be/09_LlHjoEiY?t=17910
 
-const findPath = require('./find-path-recursive');
 const Graph = require('./graph');
-
-const maxFlow = (fg) => {
-  let p;
-  while ((p = findAugmentingPath(fg))) {
-    augmentFlow(p);
-  }
-  return totalFlowToSink(fg);
-};
-
-const totalFlowToSink = (fg) => (
-  fg.inEdges(fg.sink()).reduce((acc, e) => acc + e.flow(), 0)
-);
-
-const findAugmentingPath = (fg) => (
-  findPath(fg, fg.source(), fg.sink())
-);
-
-const augmentFlow = (p) => {
-  const d = residualCapacityOf(p);
-  p.forEach(e => e.augmentFlow(d));
-};
-
-const residualCapacityOf = (p) => (
-  Math.min(...p.map(e => e.residualCapacity()))
-);
 
 class Edge {
   constructor(from, to) {
@@ -74,8 +48,4 @@ class FlowGraph extends Graph {
   sink() { return this.t }
 }
 
-module.exports = { maxFlow, FlowGraph };
-
-if (require.main === module) {
-  require('./test-max-flow')(module.exports, process.argv[2]);
-}
+module.exports = FlowGraph;
