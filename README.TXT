@@ -374,5 +374,32 @@ Max Flow Ford-Fulkerson method - https://youtu.be/09_LlHjoEiY?t=17910
   -- without exceeding the CAPACITY of any edge
 - the maximum flow EQUALS the SUM of the flows entering the sink
 
+                        * * * 
 
-Continue from here https://youtu.be/09_LlHjoEiY?t=19646
+Max flow: unweighted bipartite graph matching - https://youtu.be/09_LlHjoEiY?t=19645
+- bipartite graph - G=(V,E), V = X u Y, 0 = X n Y, all (u,v) of E: u of X, v of Y
+- max cardinality bipartite matching (MCBM) - 
+  given V, find E, such that sum(f(u,v)) is max/min for all (u,v)
+
+- PROBLEM: match READERS with BOOKS in a library
+  -- solution: max-flow with S connecting all readers, and all book connecting T
+  -- An S to reader edge capacity represents maximum number allowed for this reader
+  -- An book to T edge capacity represents maximum copies of the book the library owns
+
+- PROBLEM: mice and owls - https://youtu.be/09_LlHjoEiY?t=20291
+  -- M mice can run distance `r` before being caught by the owl
+  -- H holes with various capacity `w` each
+  -- what's the maximum capacity of mice which can hide
+  -- solution: max-flow with S connecting all mice, and all holes connecting T
+  -- c(S Mi)=1, c(Hi T)=Wi, (Mi Hj) in E with c(Mi Hi)=1 if distance(Mi Hj) < r 
+
+PROBLEM: elementary math - https://youtu.be/09_LlHjoEiY?t=20771
+  -- Given pairs of numbers (a,b), select one of 3 operators (+,-,x)
+     such that the solutions are unique
+  -- solution: max-flow with S connecting pairs, and possible unique solutions connecting T
+  -- c(S Pi)=1, c(Rj T)=1, (Pi Rj) in E with c(Pi Rj)=1 if Rj in Pi's possible solutions
+
+Network flow: Edmonds-Karp algorithm - https://youtu.be/09_LlHjoEiY?t=21381
+
+
+Continue from here https://youtu.be/09_LlHjoEiY?t=20771

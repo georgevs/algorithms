@@ -8,9 +8,12 @@ const maxFlow = (fg) => {
   while ((p = findAugmentingPath(fg))) {
     augmentFlow(p);
   }
-  const r = fg.inEdges(fg.sink()).reduce((acc, [, , f]) => acc + f, 0);
-  return r;
+  return totalFlowToSink(fg);
 };
+
+const totalFlowToSink = (fg) => (
+  fg.inEdges(fg.sink()).reduce((acc, [, , f]) => acc + f, 0)
+);
 
 const findAugmentingPath = (fg) => (
   findPath(new ResidualGraph(fg), fg.source(), fg.sink())
