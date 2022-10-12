@@ -1,7 +1,5 @@
 const findPath = (g, s, t) => {
-  // console.log(g, s, t);
   const iter = (v, vs, p) => {
-    // console.log(v, vs, p);
     if (v === t) { return p }
     for (const e of g.outEdges(v)) {
       if (e.acceptable()) {

@@ -32,4 +32,6 @@ module.exports = test;
 
 if (require.main === module) {
   test(require('./find-path-dfs-recursive'));
+  test(require('./find-path-bfs'));
+  test(require('./find-path-bfs-recursive'));
 }

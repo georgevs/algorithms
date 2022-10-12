@@ -22,5 +22,7 @@ const test = (maxFlow, n) => loop(Number.parseInt(n) || 1, () => {
 module.exports = test;
 
 if (require.main === module) {
-  test(require('./max-flow-dfs'));
+  test(require('./max-flow-dfs-recursive'));
+  test(require('./max-flow-edmonds-karp-bfs'));
+  test(require('./max-flow-edmonds-karp-bfs-recursive'));
 }
