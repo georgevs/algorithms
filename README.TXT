@@ -365,6 +365,7 @@ Graph edge density analysis - https://youtu.be/09_LlHjoEiY?t=17186
                         * * * 
 
 Max Flow Ford-Fulkerson method - https://youtu.be/09_LlHjoEiY?t=17910
+file:///./network-flow/max-flow-dfs-recursive.js
 - Flow graph: 
   -- edges have max CAPACITY, and flow VALUE
   -- SOURCE and SINK node
@@ -393,13 +394,33 @@ Max flow: unweighted bipartite graph matching - https://youtu.be/09_LlHjoEiY?t=1
   -- solution: max-flow with S connecting all mice, and all holes connecting T
   -- c(S Mi)=1, c(Hi T)=Wi, (Mi Hj) in E with c(Mi Hi)=1 if distance(Mi Hj) < r 
 
-PROBLEM: elementary math - https://youtu.be/09_LlHjoEiY?t=20771
+- PROBLEM: elementary math - https://youtu.be/09_LlHjoEiY?t=20771
   -- Given pairs of numbers (a,b), select one of 3 operators (+,-,x)
      such that the solutions are unique
   -- solution: max-flow with S connecting pairs, and possible unique solutions connecting T
   -- c(S Pi)=1, c(Rj T)=1, (Pi Rj) in E with c(Pi Rj)=1 if Rj in Pi's possible solutions
 
 Network flow: Edmonds-Karp algorithm - https://youtu.be/09_LlHjoEiY?t=21381
+file:///./network-flow/max-flow-edmonds-karp-bfs.js
+- Edmonds-Karp algorithm is an improvement of Max Flow Ford-Fulkerson method 
+  by selecting augmenting paths with BFS.
 
+Network flow: capacity scaling - https://youtu.be/09_LlHjoEiY?t=22207
+- Capacity scaling is an euristic improvement of Max Flow Ford-Fulkerson method 
+  by selecting augmenting paths with edges ONLY above some threshold 'd'
+- The threshold initial value is the maximum power of 2 value which is
+  less or equal than the largest edge capacity in the flow graph.
+- The threshold value is split in half each time no more augmenting path exist
+  with residual capacity above the threshold.
+- Once the threshold value is zero the process is done.
 
-Continue from here https://youtu.be/09_LlHjoEiY?t=22207
+Network flow: Dinic's algorithm - https://youtu.be/09_LlHjoEiY?t=23104
+- Dinic's algorithm is an improvement of the Max Flow Ford-Fulkerson method
+  by selecting augmenting paths from LEVEL GRAPHS of the flow graph
+- A level graph is a sub-graph of the flow graph with only those edges which:
+  -- still have non-zero residual capacity, and
+  -- have vertices STRICTLY from lower to higher level (BFS distance from the source)
+- The algorithm first exhausts all possible augmenting paths form the current level graph,
+  then the next level graph is constructed, OR if one can't be constructed the process is done 
+
+THE END
