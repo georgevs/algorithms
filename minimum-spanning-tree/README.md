@@ -1,18 +1,20 @@
 # Minimum Spanning Tree
 
-## Prim's algorithm
+## Prim's algorithm (CLRS 23.2)
 ```
+MST-PRIM G(V E) -> T
+  
 ```
 
-## Kruskal algorithm
+## Kruskal algorithm (CLRS 23.2)
 ```
-r V E -> f S{V} Q{E} T{}
+MST-KRUSKAL G(V E) -> T
+  S = { v -> {v} }
+  Q = SORT E
 
-f S Q T -> T ? Q=={}
-        |  f S' Q' T' : {Q',e}=g Q S, S'=S-e, T'=T+e
-
-g Q S -> {Q',e} ? e<-!S : Q'=Q-e, e=min(Q)
-      |  g Q' S
-
-min Q -> e : w(e)==min{ w(e) : e<-Q }
+  for e <- Q
+    u,v <- e  
+    if S[u] != S[v]
+      T <- e
+      S[u] = S[v] = S[u] + S[v]
 ```
