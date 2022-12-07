@@ -13,7 +13,7 @@ class Edge {
 }
 
 class FlowEdge extends Edge {
-  constructor(from, to, flow, capacity) {
+  constructor(from, to, capacity, flow = 0) {
     super(from, to);
     this.flow_ = flow;
     this.capacity_ = capacity;
@@ -36,7 +36,7 @@ class ResidualEdge extends Edge {
 class FlowGraph extends Graph {
   constructor(n, xs, s, t) {
     const exs = xs.flatMap(([v1, v2, c]) => {
-      const fe = new FlowEdge(v1, v2, 0, c);
+      const fe = new FlowEdge(v1, v2, c);
       const re = new ResidualEdge(fe);
       return [fe, re];
     });
